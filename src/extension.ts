@@ -98,7 +98,7 @@ export function activate(context: vscode.ExtensionContext) {
     for (const command of terminalConf.commands) {
       const folderPath = vscode.workspace.rootPath;
       const { name: terminalName, cwd } = command;
-      const path = cwd ? `${folderPath}\\${cwd}` : undefined;
+      const path = cwd ? path.join(folderPath, cwd) : undefined;
 
       const existTerminal = vscode.window.terminals.find(
         terminal => terminal.name === terminalName
